@@ -5,7 +5,6 @@ import java.util.Iterator;
 public class TreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V> {
 
     private BinarySearchTree<Entry<K, V>> tree = new BinarySearchTree<>();
-    private int size = 0;
 
     private static class Entry<K extends Comparable<K>, V> implements MapEntry<K, V>, Comparable<Entry<K, V>> {
         K key;
@@ -43,7 +42,6 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V> {
     @Override
     public void put(K key, V val) {
         tree.add(new Entry<>(key, val));
-        size++;
     }
 
     public V remove(K key) {
@@ -52,10 +50,10 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V> {
 
     @Override
     public int size() {
-        return size;
+        return tree.size();
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public Iterator<MapEntry<K, V>> iterator() {
         return (Iterator)tree.iterator();
     }
