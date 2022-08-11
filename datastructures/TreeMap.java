@@ -6,7 +6,7 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V> {
 
     private BinarySearchTree<Entry<K, V>> tree = new BinarySearchTree<>();
 
-    private static class Entry<K extends Comparable<K>, V> implements MapEntry<K, V>, Comparable<Entry<K, V>> {
+    private static class Entry<K extends Comparable<K>, V> implements Map.Entry<K, V>, Comparable<Entry<K, V>> {
         K key;
         V val;
 
@@ -53,10 +53,8 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V> {
         return tree.size();
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Iterator<MapEntry<K, V>> iterator() {
-        return (Iterator)tree.iterator();
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public Iterator<Map.Entry<K, V>> iterator() {
+        return (Iterator) tree.iterator();
     }
 }
-
-

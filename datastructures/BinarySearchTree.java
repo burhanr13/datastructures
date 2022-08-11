@@ -68,7 +68,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
                     curNode = curNode.left;
                 }
             } else {
-                return;
+                curNode.data = e;
             }
         }
     }

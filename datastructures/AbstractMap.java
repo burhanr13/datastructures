@@ -1,14 +1,14 @@
 package datastructures;
 
-public abstract class AbstractMap<K,V> implements Map<K,V> {
+public abstract class AbstractMap<K, V> implements Map<K, V> {
 
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
 
         str.append("{ ");
-        for (MapEntry<K, V> e : this) {
-            str.append(e.getKey().toString() + ":" + e.getVal().toString() + ", ");
+        for (Map.Entry<K, V> e : this) {
+            str.append(e.getKey().toString() + " : " + e.getVal().toString() + ", ");
         }
         str.replace(str.length() - 2, str.length(), " }");
 
@@ -36,5 +36,5 @@ public abstract class AbstractMap<K,V> implements Map<K,V> {
 
     @Override
     public abstract int size();
-    
+
 }

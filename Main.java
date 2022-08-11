@@ -91,7 +91,7 @@ class Main {
         // }
         // System.out.println(Arrays.toString(deq.elements));
 
-        Map<Integer, String> map = new TreeMap<>();
+        Map<Integer, String> map = new HashMap<>();
 
         map.put(0, "zero");
         map.put(1, "one");

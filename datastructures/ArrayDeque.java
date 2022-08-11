@@ -12,7 +12,7 @@ public class ArrayDeque<T> implements Deque<T>, Stack<T> {
     
     @SuppressWarnings("unchecked")
     public ArrayDeque(int size) {
-        elements = (T[]) (new Object[size]);
+        elements = (T[]) new Object[size];
         first = 0;
         last = 0;
     }
@@ -108,7 +108,7 @@ public class ArrayDeque<T> implements Deque<T>, Stack<T> {
     private void resize(int newsize) {
         T[] old = elements;
         int start = first;
-        elements = (T[]) (new Object[newsize]);
+        elements = (T[]) new Object[newsize];
         first = 0;
         last = 0;
         add(old[start]);
