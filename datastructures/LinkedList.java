@@ -160,6 +160,7 @@ public class LinkedList<T> extends AbstractList<T> implements Stack<T>, Deque<T>
 
     @Override
     public void sort(Comparator<T> c) {
+        //TODO
         throw new UnsupportedOperationException("havent implemented sorting for linked lists yet");
     }
 

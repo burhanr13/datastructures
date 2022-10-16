@@ -6,8 +6,8 @@ import java.util.function.Consumer;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 
-    Node<T> root;
-    int size;
+    private Node<T> root;
+    private int size;
 
     private static class Node<T> {
         T data;
@@ -30,12 +30,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
     private Node<T> getNode(T e) {
         Node<T> curNode = root;
         while (curNode != null) {
-            if (curNode.data.equals(e))
-                return curNode;
             if (curNode.data.compareTo(e) > 0) {
                 curNode = curNode.left;
-            } else {
+            } else if(curNode.data.compareTo(e) < 0){
                 curNode = curNode.right;
+            } else {
+                return curNode;
             }
         }
         return null;
@@ -59,7 +59,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
                 } else {
                     curNode = curNode.right;
                 }
-            } else {
+            } else if (curNode.data.compareTo(e) > 0) {
                 if (curNode.left == null) {
                     curNode.left = newNode;
                     newNode.parent = curNode;
@@ -67,6 +67,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
                 } else {
                     curNode = curNode.left;
                 }
+            } else {
+                curNode.data = e;
             }
         }
     }
@@ -184,7 +186,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
     }
 
     public Iterator<T> iterator() {
-        Queue<Node<T>> nodes = new LinkedList<>();
+        Queue<Node<T>> nodes = new ArrayDeque<>();
         if (root != null)
             nodes.add(root);
 
