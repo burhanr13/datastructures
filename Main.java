@@ -33,9 +33,6 @@ class Main {
 
 
 
-
-
-
         List<Integer> alist = new LinkedList<>();
         for (int i = 0; i < 10; i++) {
             alist.add(i);

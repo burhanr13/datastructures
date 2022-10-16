@@ -23,7 +23,7 @@ public class ArrayList<T> extends AbstractList<T> {
     @Override
     public void add(int index, T e) {
         if (size == elements.length)
-            resize(size + size / 2);
+            resize(2 * size);
         for (int i = size; i > index; i--) {
             elements[i] = elements[i - 1];
         }
@@ -57,6 +57,9 @@ public class ArrayList<T> extends AbstractList<T> {
         }
         elements[size - 1] = null;
         size--;
+        if (size < elements.length / 4) {
+            resize(size / 2);
+        }
         return removed;
     }
 
@@ -126,7 +129,7 @@ public class ArrayList<T> extends AbstractList<T> {
 
         };
     }
-    
+
     private void quickSort(T[] arr, int start, int end, Comparator<T> c) {
         if (start >= end)
             return;
@@ -151,9 +154,9 @@ public class ArrayList<T> extends AbstractList<T> {
         quickSort(arr, start, b, c);
         quickSort(arr, a, end, c);
     }
-    
+
     public void sort(Comparator<T> c) {
-        quickSort(elements, 0, size-1, c);
+        quickSort(elements, 0, size - 1, c);
     }
 
 }
